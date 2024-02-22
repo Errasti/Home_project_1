@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Категории
+{% endblock %}
+
+{% block header %}
+Категории товаров
+{% endblock %}
+{% block menu %}
+<ul>
+ {% for line in type %}
+    {% if line == 'Обувь' %}
+        <li><a href=" {{ url_for('shoes') }}">{{ line }}</a></li>
+    {% elif line == 'Детская одежда' %}
+        <li><a href=" {{ url_for('kids') }}">{{ line }}</a></li>
+    {% elif line == 'Мужская одежда' %}
+        <li><a href=" {{ url_for('man') }}">{{ line }}</a></li>
+    {% elif line == 'Женская одежда' %}
+        <li><a href=" {{ url_for('woman') }}">{{ line }}</a></li>
+    {% else %}
+        <li>{{ line }}</li>
+    {% endif %}
+ {% endfor %}
+</ul>
+<button><a href="{{ url_for('index') }}">На главную</a></button>
+{% endblock %}

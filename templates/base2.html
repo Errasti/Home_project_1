@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+      {% block title %}
+      Не заполнено
+      {% endblock %}
+    </title>
+</head>
+<body>
+{% block header %}
+  <header>
+    Не заполнено
+  </header>
+{% endblock %}
+
+{% block menu %}
+  <ul>
+    <li>Товар1</li>
+    <li>Товар2</li>
+    <li>Товар3</li>
+  </ul>
+<button><a href="{{ url_for('index') }}">На главную</a></button>
+<button><a href="{{ url_for('category_type') }}">Назад</a></button>
+{% endblock %}
+
+{% block footer %}
+ <footer>Все права защищены. 2024</footer>
+{% endblock %}
+
+</body>
+</html>
