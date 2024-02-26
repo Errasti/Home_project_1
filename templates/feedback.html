@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+Обратная связь
+{% endblock %}
+{% block header %}
+Обратная связь
+{% endblock %}
+{% block menu %}
+<form action="/feedback" method="post">
+    <input type="text" name="name" placeholder="Имя">
+    <input type="text" name="email" placeholder="Email">
+    <a href="{{ url_for('hello') }}">
+    <input type="submit" value="Отправить">
+    </a>
+</form>
+<button><a href="{{ url_for('index') }}">На главную</a></button>
+{% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, make_response, redirect, url_for
 
 
 app = Flask(__name__)
@@ -38,6 +38,30 @@ def man():
 @app.route('/woman/')
 def woman():
     return render_template('woman.html')
+
+
+@app.post('/feedback/')
+def feedback_post():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    response = make_response()
+    response.set_cookie('name', name)
+    response.set_cookie('email', email)
+    return redirect(url_for('hello'))
+
+
+@app.route('/hello/')
+def hello():
+    context = {
+        'name': request.cookies.get('name'),
+        'email': request.cookies.get('email'),
+    }
+    return render_template('hello.html', **context)
+
+
+@app.get('/feedback/')
+def feedback_get():
+    return render_template('feedback.html')
 
 
 if __name__ == '__main__':
